@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 script {
-                    currentBuild.displayName = "${env.VERSION)}"
+                    currentBuild.displayName = "${env.VERSION}"
                     withCredentials([usernamePassword(credentialsId: env.DOCKER_REGISTRY_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]){
                         sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                         sh "docker build -t $IMAGE_TAG:$VERSION custom"
